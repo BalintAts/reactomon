@@ -7,7 +7,7 @@ import PokemonList from './components/pokemonList';
 
 ReactDOM.render(
   <React.StrictMode>
-    <PokemonList />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

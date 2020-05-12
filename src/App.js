@@ -2,10 +2,12 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import PokemonList from './components/pokemonList';
+import { BrowserRouter as Router, Switch, Route, browserHistory } from 'react-router-dom';
+import NavPage from './components/navPage';
 
 function App() {
   return (
-    <PokemonList />
+    < NavPage />
   );
 }
 
