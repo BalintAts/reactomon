@@ -12,9 +12,9 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path={"/home"} component={Home} />
-        <Route path={"/pokemonList"} component={PokemonList} />
-        <Route path={"/typelist"} component={TypeList} />
+        <Route path={"/home"} exact component={Home} />
+        <Route path={"/pokemonList"} exact component={PokemonList} />
+        <Route path={"/typeList"} exact component={TypeList} />
       </Switch>
     </Router >
     // < NavPage />
