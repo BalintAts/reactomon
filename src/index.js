@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import PokemonList from './components/pokemonList';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <PokemonList />
   </React.StrictMode>,
   document.getElementById('root')
 );
