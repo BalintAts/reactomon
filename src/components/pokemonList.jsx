@@ -28,7 +28,9 @@ class PokemonList extends Component {
                     {this.state.loading ? (<h3>Loading...</h3>) :
                         (<React.Fragment>
                             <ul>
-                                {this.state.currentPage.map(pokemon => <li key={pokemon.name}>{pokemon.name}</li>)}
+                                {this.state.currentPage.map(pokemon => <li key={pokemon.name}>
+                                    <Link to={'/pokemon/' + pokemon.name}>{pokemon.name}</Link>
+                                </li>)}
                             </ul>
                             <div>
                                 <button onClick={direction => this.prev()}>Prev</button>

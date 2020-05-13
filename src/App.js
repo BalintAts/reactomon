@@ -17,6 +17,7 @@ function App() {
         <Route path={"/pokemonList"} exact component={PokemonList} />
         <Route path={"/typeList"} exact component={TypeList} />
         <Route path={"/debugPokemon"} exact component={PokemonDetail} />
+        <Route path={"/pokemon/:pokeId"} component={PokemonDetail} />
       </Switch>
     </Router >
     // < NavPage />
