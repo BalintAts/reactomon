@@ -7,6 +7,7 @@ import Home from './components/home';
 import TypeList from './components/typeList';
 import PokemonList from './components/pokemonList';
 import { createBrowserHistory } from 'history'
+import PokemonDetail from './components/pokemonDetail';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path={"/home"} exact component={Home} />
         <Route path={"/pokemonList"} exact component={PokemonList} />
         <Route path={"/typeList"} exact component={TypeList} />
+        <Route path={"/debugPokemon"} exact component={PokemonDetail} />
       </Switch>
     </Router >
     // < NavPage />
