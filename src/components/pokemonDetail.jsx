@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 const PokemonDetail = props => {
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [name, setName] = useState(null);
     const [abilities, setAbilities] = useState(null);
     const [experience, setExperience] = useState(null);
@@ -13,16 +13,18 @@ const PokemonDetail = props => {
         const url = "https://pokeapi.co/api/v2/pokemon/1/";   //this will be a prop?
         // const url2 = {`https://pokeapi.co/api/v2/pokemon/${pokemonId}`};
         fetch(url)
-            .then(response => {
-                return response.json()
-            })
+            .then(response =>
+                response.json()
+            )
             .then(data => {
                 console.log(data);
                 setName(data.forms[0].name);
-                setIsLoading(false);
                 setAbilities(data.abilities);
                 setExperience(data.base_experience);
-            });
+                setIsLoading(false);
+
+            })
+            .catch(error => console.log(error));
     }, []);  //use effect is called alse when [] changes
 
 
@@ -34,9 +36,9 @@ const PokemonDetail = props => {
                 (<div>
                     <h1>{name}</h1>
                     <h3>Abilities:</h3>
-                    {/* <ul>
-                        {abilities.map(ability => <li key={ability.name}>{ability.name}</li>)}
-                    </ul> */}
+                    <ul>
+                        {abilities.map(ability => <li key={ability.ability.name}>{ability.ability.name}</li>)}
+                    </ul>
                     <h3>Base Experience: {experience}</h3>
                 </div>)}
         </React.Fragment>);

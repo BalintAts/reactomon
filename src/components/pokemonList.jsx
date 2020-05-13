@@ -1,74 +1,64 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, browserHistory } from 'react-router-dom';
 import PokemondDetail from './pokemonDetail';
 import Navbar from './navbar';
 import { Link } from 'react-router-dom';
 
-class PokemonList extends Component {
-    state = {
-        loading: true,
-        currentPage: null,
-        pageNumber: 1,
-    }
+const PokemonList = props => {
 
-    async componentDidMount(pageNumber) {
+    const [isLoading, setIsLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState([1, 2, 3, 4, 5]); //placeholderstate... :)
+    const [pageNumber, setPageNumber] = useState(0);
+
+    useEffect(() => {
         const url = "https://pokeapi.co/api/v2/pokemon?offset=" + (pageNumber * 20) + "&limit=20";
-        const response = await fetch(url);
-        const data = await response.json();
-        console.log(data);
-        this.setState({ currentPage: data.results, loading: false });
-        console.log(data.results);
-    }
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                setCurrentPage(data.results);
+                setIsLoading(false);
+            })
+            .catch(error => console.log(error));
 
-    render() {
-        return (
-            <React.Fragment>
-                <Navbar />
-                <div>
-                    {this.state.loading ? (<h3>Loading...</h3>) :
-                        (<React.Fragment>
-                            <ul>
-                                {this.state.currentPage.map(pokemon => <li key={pokemon.name}>
-                                    <Link to={'/pokemon/' + pokemon.name}>{pokemon.name}</Link>
-                                </li>)}
-                            </ul>
-                            <div>
-                                <button onClick={direction => this.prev()}>Prev</button>
-                                <button onClick={direction => this.next()}>Next</button>
-                            </div>
-                        </React.Fragment>)}
-                </div>
-            </React.Fragment>);
-    }
+    }, [pageNumber]);
 
-    next() {
-        this.pagination('next');
-        this.setState({ pageNumber: this.state.pageNumber + 1 })
-    }
 
-    prev() {
-        this.pagination('prev');
-        this.setState({ pageNumber: this.state.pageNumber - 1 })
-    }
+    const next = () => {
+        pagination('next');
+        setPageNumber(pageNumber + 1);
+    };
 
-    pagination = direction => {
-        this.setState({ loading: true })
-        this.componentDidMount(this.state.pageNumber);
-    }
+    const prev = () => {
+        pagination('prev');
+        setPageNumber(pageNumber - 1);
+    };
+
+    const pagination = direction => {
+        setIsLoading(true);
+    };
+
+
+    return (
+        <React.Fragment>
+            <Navbar />
+            <div>
+                {isLoading ? (<h3>Loading...</h3>) :
+                    (<React.Fragment>
+                        <ul>
+                            {currentPage.map(pokemon => <li key={pokemon.name}>
+                                <Link to={'/pokemon/' + pokemon.name}>{pokemon.name}</Link>
+                            </li>)}
+                        </ul>
+                        <div>
+                            <button onClick={direction => prev()}>Prev</button>
+                            <button onClick={direction => next()}>Next</button>
+                        </div>
+                    </React.Fragment>)}
+            </div>
+        </React.Fragment>);
+    return <h1>safivh</h1>;
 }
 
 export default PokemonList;
 
-
-
-
-// requesting url: `/name=${pokemon.name}`
-
-
-
-
-// <Router>
-                                        //     <Route path="`/name = ${pokemon.name}`" />
-                                        //         <li key={pokemon.name}><a href="`/name = ${pokemon.name}`">{pokemon.name}</a>
-                                        //         </li>
-                                        // </Router>)}
