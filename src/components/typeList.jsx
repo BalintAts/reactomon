@@ -3,12 +3,31 @@ import Navbar from './navbar';
 import { Link } from 'react-router-dom';
 
 class TypeList extends Component {
-    state = {}
+    state = {
+        loading: true,
+        types: null,
+    }
+
+    async componentDidMount(pageNumber) {
+        const url = "https://pokeapi.co/api/v2/type";
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
+        this.setState({ types: data.results, loading: false });
+    }
+
     render() {
         return (
             <React.Fragment>
                 <Navbar />
-                <h3>Types</h3>
+                <div>
+                    {this.state.loading ? (<h3>Loading...</h3>) :
+                        (<React.Fragment>
+                            <ul>
+                                {this.state.types.map(type => <li key={type.name}>{type.name}</li>)}
+                            </ul>
+                        </React.Fragment>)}
+                </div>
             </React.Fragment>);
     }
 }
