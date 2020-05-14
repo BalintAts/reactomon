@@ -11,8 +11,7 @@ class TypeList extends Component {
     async componentDidMount(pageNumber) {
         const url = "https://pokeapi.co/api/v2/type";
         const response = await fetch(url);
-        const data = await response.json();
-        console.log(data);
+        const data = await response.json();;
         this.setState({ types: data.results, loading: false });
     }
 
