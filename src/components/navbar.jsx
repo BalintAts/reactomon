@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import PokeStyledListLink from './styles/pokeStyledListLink';
+import LinkStyle from './styles/pokeStyledListLink';
 
 const Navbar = props => {
     return (
         <div>
-            <Link to="/home">Home</Link>
-            <Link to="/pokemonList">Pokemons</Link>
-            <Link to="/typeList">Types</Link>
-            <Link to="/debugPokemon">DebugPokemon</Link>
+            <LinkStyle to="/home">Home</LinkStyle>
+            <LinkStyle to="/pokemonList">Pokemons</LinkStyle>
+            <LinkStyle to="/typeList">Types</LinkStyle>
+            <LinkStyle to="/debugPokemon">DebugPokemon</LinkStyle>
         </div>
     );
 }
