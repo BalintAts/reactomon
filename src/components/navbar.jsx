@@ -8,7 +8,7 @@ const Navbar = props => {
             <LinkStyle to="/home">Home</LinkStyle>
             <LinkStyle to="/pokemonList">Pokemons</LinkStyle>
             <LinkStyle to="/typeList">Types</LinkStyle>
-            <LinkStyle to="/debugPokemon">DebugPokemon</LinkStyle>
+            {/* <LinkStyle to="/debugPokemon">DebugPokemon</LinkStyle> */}
         </div>
     );
 }
