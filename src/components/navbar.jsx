@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import LinkStyle from './styles/pokeStyledListLink';
+import './styles/navbar.css';
 
 const Navbar = props => {
     return (
@@ -15,3 +16,8 @@ const Navbar = props => {
 
 
 export default Navbar;
+
+
+
+
+// className="bg-img"

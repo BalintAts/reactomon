@@ -1,0 +1,15 @@
+.bg{
+    background-image: url("https://images.nintendolife.com/news/2014/10/itll_be_possible_to_catch_all_719_pokemon_using_omega_ruby_and_alpha_sapphire_with_x_and_y/attachment/0/original.jpg");
+    background-size:     cover;                      
+    background-repeat:   no-repeat;
+    background-position: center center;
+    min-height: 100%;
+    height: 100%;
+}
+
+
+html,body { height: 100%; margin: 0px; padding: 0px; }
+
+
+
+
