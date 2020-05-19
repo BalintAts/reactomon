@@ -6,6 +6,7 @@ import PokemondDetail from './pokemonDetail';
 import Navbar from './navbar';
 import LinkStyle from './styles/pokeStyledListLink';
 import Button from './styles/styledNextPrevButton';
+import { ThemeProvider } from './themeContext';
 
 
 const PokemonList = props => {
@@ -45,7 +46,7 @@ const PokemonList = props => {
 
 
     return (
-        <>
+        <ThemeProvider>
             <Navbar />
             <div>
                 {isLoading ? (<h3>Loading...</h3>) :
@@ -62,7 +63,7 @@ const PokemonList = props => {
                         </div>
                     </>)}
             </div>
-        </>);
+        </ThemeProvider>);
 }
 
 export default PokemonList;

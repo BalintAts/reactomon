@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './navbar';
-import axios from 'axios';
+import { ThemeProvider } from './themeContext';
 
 
 const PokemonDetail = props => {
@@ -36,7 +36,7 @@ const PokemonDetail = props => {
 
 
     return (
-        <React.Fragment>
+        <ThemeProvider>
             <Navbar />
             {isLoading ? (<h3>Loading...</h3>) :
                 (<div>
@@ -49,7 +49,7 @@ const PokemonDetail = props => {
                     </ul>
                     <h3>Base Experience: {experience}</h3>
                 </div>)}
-        </React.Fragment>);
+        </ThemeProvider>);
 
 }
 
